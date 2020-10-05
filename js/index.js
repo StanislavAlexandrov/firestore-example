@@ -16,6 +16,7 @@ db.collection('users')
     .onSnapshot(function (doc) {
         console.log('Current data: ', doc.data());
         storedNumber = doc.data().value;
+        valueEl.innerHTML = storedNumber;
     });
 
 /* function getValues(collectionName, docName) {
