@@ -1,0 +1,17 @@
+* {
+    font-size: 48px;
+}
+
+.container {
+    display: flex;
+
+    justify-content: center;
+    align-content: space-between;
+    text-align: center;
+    flex-direction: column;
+}
+
+.clickyWords {
+    justify-content: space-evenly;
+    display: flex;
+}
