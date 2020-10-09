@@ -70,7 +70,12 @@ function textsFunction() {
 
 db.collection('texts').onSnapshot(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
-        document.getElementById('textsButton').textContent = doc.data().word;
+        if (`${doc.data().shown}` == 'true'){
+        document.getElementById('textsButton').textContent = doc.data().word}
+        else {
+            document.getElementById('textsButton').textContent =
+                        'not true';
+        }
     });
 });
 
