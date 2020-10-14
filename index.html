@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Redux basic example</title>
+        <title>firestore-example</title>
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-app.js"></script>
@@ -33,35 +33,11 @@
             };
             // Initialize Firebase
         </script>
-        <div class="container">
-            <div>
-                <button
-                    type="button"
-                    class="btn btn-primary btn-lg"
-                    id="textsButton"
-                >
-                    texts
-                </button>
-                <button
-                    type="button"
-                    class="btn btn-primary btn-lg"
-                    id="incrementButton"
-                >
-                    +
-                </button>
-                <div><span id="value">0</span> times</div>
+        <h1 id="hotDogOutput">hot dog stat:</h1>
+        <input type="textfield" id="latestHotDogStatus">
+        <button id="saveButton" class="btn btn-primary btn-lg">save</button>
+        <button id="loadButton" class="btn btn-primary btn-lg">load</button>
 
-                <button
-                    type="button"
-                    class="btn btn-warning btn-lg"
-                    id="resetButton"
-                >
-                    reset
-                </button>
-            </div>
-            <br />
-            <div class="clickyWords"></div>
-        </div>
         <script
             src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
