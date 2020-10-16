@@ -58,7 +58,7 @@ const getRealtimeUpdates = function () {
             const myData = doc.data(); //extract the contents of the document as an object
             console.log(myData);
             outputHeader.innerText = myData.hotDogStatus;
-            sentenceText.innerText = myData.hotDogStatus;
+            //sentenceText.innerText = myData.hotDogStatus;
         }
     });
 };
@@ -70,7 +70,7 @@ let counter = 0;
 
 function nextPicClick() {
     console.log(counter);
-    if (counter <= 3) {
+    if (counter <= myLinks.length - 1) {
         picRef.update({ myCounter: myLinks[counter] });
         picRef.onSnapshot(function (doc) {
             pictureShown.src = doc.data().myCounter;
