@@ -80,3 +80,4 @@ else{counter=1;
 
 
 nextPicButton.addEventListener("click", nextPicClick);
+nextPicClick();
