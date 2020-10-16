@@ -62,13 +62,13 @@ getRealtimeUpdates();
 let counter = 1;
 function nextPicClick() {
     if(counter<=4){
-    picRef.get().then(doc => {
+    picRef.onSnapshot(function(doc) {
         let linker = "link" + counter;
         pictureShown.src = doc.data()[linker]
         counter++;
     })}
 else{counter=1;
-    picRef.get().then(doc => {
+    picRef.onSnapshot(function(doc)  {
         linker = "link" + counter;
         pictureShown.src = doc.data()[linker]
         counter++;
