@@ -85,3 +85,4 @@ function nextPicClick() {
 //go through them here and upload the link to firestore
 
 nextPicButton.addEventListener('click', nextPicClick);
+nextPicClick();
