@@ -61,16 +61,21 @@ getRealtimeUpdates();
 //again, DOC is a snapshot, we pass it as an argument
 let counter = 1;
 function nextPicClick() {
+    
     if(counter<=4){
+        picRef.update({myCounter: counter});
     picRef.onSnapshot(function(doc) {
         let linker = "link" + counter;
         pictureShown.src = doc.data()[linker]
+        console.log(doc.data()[linker])
         counter++;
     })}
 else{counter=1;
+    picRef.update({myCounter: counter});
     picRef.onSnapshot(function(doc)  {
         linker = "link" + counter;
         pictureShown.src = doc.data()[linker]
+        console.log(doc.data()[linker])
         counter++;
     })
 }};
@@ -80,4 +85,3 @@ else{counter=1;
 
 
 nextPicButton.addEventListener("click", nextPicClick);
-nextPicClick();
