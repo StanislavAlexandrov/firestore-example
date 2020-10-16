@@ -1,7 +1,10 @@
 //initialize firebase
 
 
-
+myLinks = ["https://cdn.insidesport.co/wp-content/uploads/2020/10/07193932/fifa.jpg", 
+"https://ewscripps.brightspotcdn.com/dims4/default/66f0dd8/2147483647/strip/true/crop/4500x2531+0+94/resize/1280x720!/quality/90/?url=http%3A%2F%2Fewscripps-brightspot.s3.amazonaws.com%2Fd8%2F66%2F88bb1d6c42baa55b461ea060923a%2Fap-27269865886.jpg", 
+"https://www.worcester.gov.uk/images/easyblog_shared/2019/b2ap3_large_Football---carousel.jpg", 
+"https://athlonsports.com/sites/athlonsports.com/files/collge_football_generic_2_DL.jpg"]
 
 firebase.initializeApp({
     apiKey: 'AIzaSyB9l86GgrlST_kNlUhVqLwAHXgE3Ljph8I',
@@ -59,23 +62,26 @@ getRealtimeUpdates();
 
 
 //again, DOC is a snapshot, we pass it as an argument
-let counter = 1;
+let counter = 0;
+
 function nextPicClick() {
     console.log(counter);
     if(counter<=4){
-        picRef.update({myCounter: "someNumber"});
+        picRef.update({myCounter: myLinks[counter]});
     picRef.onSnapshot(function(doc) {
-        let linker = "link" + counter;
-        pictureShown.src = doc.data()[linker]
-        console.log(doc.data()[linker])
+        
+        pictureShown.src = doc.data().myCounter;
+        
         counter++;
+        
     })}
-else{counter=1;
+else{counter=0;
     
     nextPicClick();
 }};
     
-     
+//instead of getting the links from the database, 
+//go through them here and upload the link to firestore
          
 
 
