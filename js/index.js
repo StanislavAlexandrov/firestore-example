@@ -1,5 +1,8 @@
 //initialize firebase
 
+
+
+
 firebase.initializeApp({
     apiKey: 'AIzaSyB9l86GgrlST_kNlUhVqLwAHXgE3Ljph8I',
     authDomain: 'basic-chat-3f218.firebaseapp.com',
@@ -8,10 +11,14 @@ firebase.initializeApp({
 
 var firestore = firebase.firestore();
 const docRef = firestore.doc("samples/sandwichData");//alternative way: call doc and specify path
+const picRef = firestore.doc("samples/picture1");
 const outputHeader = document.querySelector("#hotDogOutput");
 const inputTextField = document.querySelector("#latestHotDogStatus");
 const saveButton = document.querySelector("#saveButton");
 const loadButton = document.querySelector("#loadButton");
+const nextPicButton = document.querySelector("#nextPicButton");
+const sentenceText = document.querySelector(".sentenceText");
+const pictureShown = document.querySelector(".pictureShown");
 
 saveButton.addEventListener("click", function(){
     const textToSave = inputTextField.value;
@@ -39,9 +46,37 @@ const getRealtimeUpdates = function() {
     docRef.onSnapshot(function(doc){
         if (doc && doc.exists){
             const myData = doc.data() //extract the contents of the document as an object
+            console.log(myData);
             outputHeader.innerText = myData.hotDogStatus;
+            sentenceText.innerText = myData.hotDogStatus;
+            
         }
     })
+    
 }
 
 getRealtimeUpdates();
+
+
+//again, DOC is a snapshot, we pass it as an argument
+counter = 1;
+function nextPicClick() {
+    if(counter<=4){
+    picRef.get().then(doc => {
+        linker = "link" + counter;
+        pictureShown.src = doc.data()[linker]
+        counter++;
+    })}
+else{counter=1;
+    picRef.get().then(doc => {
+        linker = "link" + counter;
+        pictureShown.src = doc.data()[linker]
+        counter++;
+    })
+}}
+    
+     
+         
+
+
+nextPicButton.addEventListener("click", nextPicClick)
