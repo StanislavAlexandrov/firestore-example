@@ -22,9 +22,9 @@ img {
     margin-top: 20px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 100%) {
     img {
-        height: 1200px;
+        height: auto;
         margin-top: 20px;
     }
 }
