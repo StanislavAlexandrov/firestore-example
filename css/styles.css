@@ -24,7 +24,7 @@ img {
 
 @media screen and (max-width: 1200px) {
     img {
-        max-height: 1200px;
+        max-height: 2000px;
         margin-top: 20px;
     }
 }
