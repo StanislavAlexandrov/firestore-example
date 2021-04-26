@@ -17,6 +17,7 @@ firebase.initializeApp({
 var firestore = firebase.firestore();
 const docRef = firestore.doc('samples/sandwichData'); //alternative way: call doc and specify path
 const picRef = firestore.doc('samples/picture1');
+const errorRef = firestore.doc('samples/error');
 const outputHeader = document.querySelector('#hotDogOutput');
 const inputTextField = document.querySelector('#latestHotDogStatus');
 const saveButton = document.querySelector('#saveButton');
@@ -87,3 +88,30 @@ function nextPicClick() {
 
 nextPicButton.addEventListener('click', nextPicClick);
 nextPicClick();
+
+function errorClick() {
+    errorRef.update({ error: true });
+
+    setTimeout(() => errorRef.update({ error: false }), 2000);
+    colorError();
+}
+
+errorButton.addEventListener('click', errorClick);
+
+const colorError = function () {
+    errorRef.onSnapshot(function (doc) {
+        if (doc && doc.exists) {
+            const myData = doc.data(); //extract the contents of the document as an object
+            console.log(myData);
+            if (myData.error === true) {
+                outputHeader.classList.add('specialRed');
+            } else {
+                outputHeader.classList.remove('specialRed');
+            }
+
+            //sentenceText.innerText = myData.hotDogStatus;
+        }
+    });
+};
+
+colorError();
