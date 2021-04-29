@@ -25,7 +25,7 @@ const loadButton = document.querySelector('#loadButton');
 const nextPicButton = document.querySelector('#nextPicButton');
 const sentenceText = document.querySelector('.sentenceText');
 const pictureShown = document.querySelector('.pictureShown');
-const audioErrorFile = 'audio/lofi-oneshot-c.wav';
+const audioErrorFile = new Audio('audio/lofi-oneshot-c.wav');
 
 saveButton.addEventListener('click', function () {
     const textToSave = inputTextField.value;
@@ -106,7 +106,8 @@ const colorError = function () {
             console.log(myData);
             if (myData.error === true) {
                 outputHeader.classList.add('specialRed');
-                new Audio(audioErrorFile).play();
+                audioErrorFile.volume = 0.5;
+                audioErrorFile.play();
             } else {
                 outputHeader.classList.remove('specialRed');
             }
