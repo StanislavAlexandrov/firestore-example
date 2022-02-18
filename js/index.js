@@ -27,9 +27,11 @@ const sentenceText = document.querySelector('.sentenceText');
 const pictureShown = document.querySelector('.pictureShown');
 const audioErrorFile = new Audio('audio/lofi-oneshot-c.wav');
 
+// const audioErrorFileAlternative = new Audio('https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3');
+
 saveButton.addEventListener('click', function () {
     const textToSave = inputTextField.value;
-    console.log(textToSave);
+
     docRef
         .set({
             hotDogStatus: textToSave,
@@ -72,7 +74,6 @@ getRealtimeUpdates();
 let counter = 0;
 
 function nextPicClick() {
-    console.log(counter);
     if (counter <= myLinks.length - 1) {
         picRef.update({ myCounter: myLinks[counter] });
         picRef.onSnapshot(function (doc) {
@@ -93,28 +94,28 @@ nextPicClick();
 function errorClick() {
     errorRef.update({ error: true });
 
-    setTimeout(() => errorRef.update({ error: false }), 2000);
-    colorError();
+    //need to clear this timeout (multiple requests)
+    //check if errorRef exists after 2000
+    // colorError();
 }
 
 errorButton.addEventListener('click', errorClick);
+errorRef.onSnapshot(function (doc) {
+    if (doc && doc.exists) {
+        const myData = doc.data(); //extract the contents of the document as an object
 
-const colorError = function () {
-    errorRef.onSnapshot(function (doc) {
-        if (doc && doc.exists) {
-            const myData = doc.data(); //extract the contents of the document as an object
-            console.log(myData);
-            if (myData.error === true) {
-                outputHeader.classList.add('specialRed');
-                audioErrorFile.volume = 0.5;
-                audioErrorFile.play();
-            } else {
-                outputHeader.classList.remove('specialRed');
-            }
-
-            //sentenceText.innerText = myData.hotDogStatus;
+        if (myData.error === true) {
+            outputHeader.classList.add('specialRed');
+            audioErrorFile.volume = 0.5;
+            audioErrorFile.play();
+            setTimeout(() => errorRef.update({ error: false }), 2000);
+        } else {
+            outputHeader.classList.remove('specialRed');
         }
-    });
-};
 
-colorError();
+        //sentenceText.innerText = myData.hotDogStatus;
+    }
+});
+const colorError = function () {};
+
+//colorError();
