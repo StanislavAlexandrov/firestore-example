@@ -1,65 +1,59 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>firestore-example</title>
 
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-firestore.js"></script>
+<head>
+    <title>firestore-example</title>
 
-        <!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-            crossorigin="anonymous"
-        />
-        <link href="./css/styles.css" rel="stylesheet" />
-    </head>
 
-    <body>
-        <script>
-            // Your web app's Firebase configuration
-            var firebaseConfig = {
-                apiKey: 'AIzaSyB9l86GgrlST_kNlUhVqLwAHXgE3Ljph8I',
-                authDomain: 'basic-chat-3f218.firebaseapp.com',
-                databaseURL: 'https://basic-chat-3f218.firebaseio.com',
-                projectId: 'basic-chat-3f218',
-                storageBucket: 'basic-chat-3f218.appspot.com',
-                messagingSenderId: '535634716548',
-                appId: '1:535634716548:web:7ac9908c45dff2c1699fd1',
-            };
+    <link href="./css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: 'AIzaSyB9l86GgrlST_kNlUhVqLwAHXgE3Ljph8I',
+            authDomain: 'basic-chat-3f218.firebaseapp.com',
+            databaseURL: 'https://basic-chat-3f218.firebaseio.com',
+            projectId: 'basic-chat-3f218',
+            storageBucket: 'basic-chat-3f218.appspot.com',
+            messagingSenderId: '535634716548',
+            appId: '1:535634716548:web:7ac9908c45dff2c1699fd1',
+        };
             // Initialize Firebase
-        </script>
-        <h1 id="hotDogOutput">hot dog stat:</h1>
-        <input type="textfield" id="latestHotDogStatus">
-        <button id="saveButton" class="btn btn-primary btn-lg">save</button>
-        <button id="loadButton" class="btn btn-primary btn-lg">load</button>
-        <button id="nextPicButton" class="btn btn-success btn-lg">next</button>
-        <button id="errorButton" class="btn btn-warning btn-lg">wrong</button>
-        
-        <br>
+    </script>
+
+
+    <div class="mainContainer">
         <div>
-            <img class="pictureShown img-fluid mx-auto d-block rounded"></img>
+            <h1 id="hotDogOutput">hot dog stat:</h1>
+        </div>
+        <input type="textfield" id="latestHotDogStatus">
+        <div>
+            <button id="saveButton" class="regularBtn">save</button>
+            <button id="loadButton" class="regularBtn">load</button>
+            <button id="nextPicButton" class="successBtn">next</button>
+            <button id="errorButton" class="warningBtn">wrong</button>
+        </div>
+        <div class="pictureContainer">
+            <img class="pictureShown "></img>
         </div>
 
-        <script
-            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-            crossorigin="anonymous"
-        ></script>
-    </body>
-    <script src="./js/index.js"></script>
+
+    </div>
+
+
+
+
+
+</body>
+<script src="./js/index.js"></script>
+
 </html>
